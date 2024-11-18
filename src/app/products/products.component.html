@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1>Productos Disponibles</h1>
+  <div class="product-grid">
+    <div class="card-container" *ngFor="let product of products">
+      <div class="card shadow-sm">
+        <img class="card-img-top" [src]="product.image" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.marca }}</p>
+          <p class="card-text">{{ product.description }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <button type="button" class="btn btn-sm btn-danger" (click)="removeFromCart(product)">-</button>
+            <span class="mx-3 fw-bold">{{ getProductQuantity(product) }}</span>
+            <button type="button" class="btn btn-sm btn-success" (click)="addToCart(product)">+</button>
+            <small class="text-muted">{{ product.price | customCurrency }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end mt-3">
+    <button type="button" class="btn btn-primary" (click)="checkout()">Comprar</button>
+  </div>
+</div>

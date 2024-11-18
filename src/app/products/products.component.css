@@ -1,0 +1,114 @@
+/* Ajustes generales */
+.container {
+  text-align: center;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  height: 450px; /* Tamaño fijo para las tarjetas */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  background: #333;
+  color: white;
+}
+
+.text-muted {
+  color: white !important;
+}
+
+.btn-group .btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-group .btn:hover {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+.card-container {
+  margin-bottom: 20px;
+}
+
+/* Media Queries adicionales */
+
+/* En pantallas pequeñas (hasta 576px) */
+@media (max-width: 576px) {
+  .product-grid {
+    grid-template-columns: 2fr; /* Una sola tarjeta por fila */
+    gap: 20px; /* Espacio entre las tarjetas */
+  }
+
+  .card {
+    height: 400px; /* Establecer un tamaño fijo para las tarjetas */
+    overflow: hidden; /* Evitar que el contenido sobrepase la tarjeta */
+  }
+
+  .card-img-top {
+    height: 180px; /* Ajustar la altura de las imágenes */
+    object-fit: cover; /* Ajustar la imagen para cubrir el área de la tarjeta */
+  }
+
+  .card-body {
+    padding: 10px; /* Reducir el padding de la tarjeta */
+  }
+
+  .btn-group .btn {
+    font-size: 12px; /* Reducir el tamaño de los botones */
+  }
+}
+
+/* En pantallas medianas (de 576px a 768px) */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
+  }
+
+  .card-img-top {
+    height: 220px; /* Ajustar la altura de las imágenes */
+  }
+
+  .card-body {
+    padding: 15px; /* Ajustar el padding de las tarjetas */
+  }
+}
+
+/* En pantallas grandes (mayores a 992px) */
+@media (min-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por fila */
+  }
+
+  .card-img-top {
+    height: 250px; /* Ajustar la altura de las imágenes */
+  }
+
+  .card-body {
+    padding: 20px; /* Ajustar el padding de las tarjetas */
+  }
+
+  .btn-group .btn {
+    font-size: 14px; /* Ajustar el tamaño de los botones */
+  }
+}
