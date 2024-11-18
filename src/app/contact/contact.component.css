@@ -1,0 +1,100 @@
+/* Contenedor principal */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna para el formulario */
+  gap: 20px; /* Espacio entre los elementos del formulario */
+}
+
+/* Estilo de las etiquetas */
+.form-label {
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* Enfoque de los campos */
+.form-control:focus {
+  background-color: #555;
+}
+
+/* Estilo de los errores */
+.text-danger {
+  margin-top: 5px;
+  color: #dc3545;
+}
+
+/* Ajustes para pantallas móviles (hasta 576px) */
+@media (max-width: 576px) {
+  /* Redimensionar el contenedor para móviles */
+  .container {
+    max-width: 100%; /* Ancho completo en pantallas pequeñas */
+    padding: 15px; /* Menos padding en pantallas pequeñas */
+  }
+
+  /* Redimensionar las etiquetas */
+  .form-label {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+
+  /* Ajustar los campos de entrada */
+  .form-control {
+    font-size: 0.9rem; /* Reducir tamaño de fuente */
+    padding: 10px; /* Ajuste de padding */
+  }
+
+  /* Botón de envío */
+  button[type="submit"] {
+    width: 100%; /* Hacer que el botón ocupe todo el ancho en móviles */
+    padding: 12px; /* Ajuste de padding para mejor visualización */
+  }
+}
+
+/* Ajustes para pantallas medianas (tabletas) */
+@media (max-width: 992px) and (min-width: 577px) {
+  .container {
+    max-width: 500px; /* Contenedor más pequeño para tabletas */
+    padding: 20px;
+  }
+
+  .form-control {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* Ajustes para pantallas grandes (escritorios) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 600px; /* Contenedor más grande para pantallas grandes */
+    padding: 20px;
+  }
+
+  .form-control {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  button[type="submit"] {
+    width: auto; /* Mantener el tamaño del botón predeterminado en pantallas grandes */
+    padding: 12px 20px;
+  }
+}
