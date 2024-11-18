@@ -1,0 +1,99 @@
+/* Contenedor principal */
+.loginSize {
+    width: 100%;
+    max-width: 400px; /* Limitar el tamaño máximo en pantallas grandes */
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna */
+    gap: 20px; /* Espaciado entre los elementos */
+  }
+  
+  /* Estilo de las etiquetas */
+  .form-label {
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  /* Estilo de los campos de entrada */
+  .form-control {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Enfoque de los campos */
+  .form-control:focus {
+    background-color: #555;
+  }
+  
+  /* Estilo de los errores */
+  .text-danger {
+    margin-top: 5px;
+    color: #dc3545;
+  }
+  
+  /* Ajustes para pantallas móviles (hasta 576px) */
+  @media (max-width: 576px) {
+    /* Redimensionar el contenedor para móviles */
+    .loginSize {
+      padding: 15px; /* Menos padding en pantallas pequeñas */
+      max-width: 95%; /* Contenedor de ancho completo */
+    }
+  
+    .form-label {
+      font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    }
+  
+    .form-control {
+      font-size: 0.9rem; /* Reducir tamaño de fuente */
+      padding: 12px; /* Ajuste de padding */
+    }
+  
+    button[type="submit"] {
+      width: 100%; /* Botón de ancho completo en móviles */
+      padding: 12px;
+    }
+  }
+  
+  /* Ajustes para pantallas medianas (tabletas) */
+  @media (max-width: 992px) and (min-width: 577px) {
+    .loginSize {
+      max-width: 500px; /* Contenedor más pequeño para tabletas */
+      padding: 20px;
+    }
+  
+    .form-control {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+    }
+  }
+  
+  /* Ajustes para pantallas grandes (escritorios) */
+  @media (min-width: 1200px) {
+    .loginSize {
+      max-width: 400px; /* Contenedor más grande para pantallas de escritorio */
+      padding: 20px;
+    }
+  
+    .form-control {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  
+    button[type="submit"] {
+      width: auto; /* Tamaño predeterminado del botón */
+      padding: 12px 20px;
+    }
+  }
+  
