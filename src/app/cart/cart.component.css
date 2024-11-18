@@ -1,0 +1,66 @@
+/* Elementos del grid */
+.grid-item {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* Pantallas grandes (escritorios) */
+@media (min-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr); /* 12 columnas */
+  }
+
+  .col-item-name {
+    grid-column: span 8; /* Ocupa 8 columnas de las 12 en pantallas grandes */
+  }
+
+  .col-item-actions {
+    grid-column: span 4; /* Ocupa 4 columnas de las 12 en pantallas grandes */
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .col-span-12 {
+    grid-column: span 12; /* Ocupa las 12 columnas */
+  }
+}
+
+/* Pantallas medianas (tabletas y pantallas medianas) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas */
+  }
+
+  .col-item-name {
+    grid-column: span 6; /* Ocupa 6 columnas en pantallas medianas */
+  }
+
+  .col-item-actions {
+    grid-column: span 6; /* Ocupa 6 columnas en pantallas medianas */
+  }
+
+  .col-span-12 {
+    grid-column: span 6; /* Ocupa las 6 columnas */
+  }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 columna */
+  }
+
+  .col-item-name {
+    grid-column: span 1; /* Ocupa toda la fila en pantallas pequeñas */
+  }
+
+  .col-item-actions {
+    grid-column: span 1; /* Ocupa toda la fila en pantallas pequeñas */
+  }
+
+  .col-span-12 {
+    grid-column: span 1; /* Ocupa toda la fila en pantallas pequeñas */
+  }
+}
