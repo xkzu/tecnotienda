@@ -1,0 +1,37 @@
+<div class="registerSize container mt-5 text-white">
+  <h1>Registro</h1>
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" novalidate>
+    <div class="form-grid">
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" (keyup)="validateEmail()" required email>
+        <div *ngIf="emailInvalid" class="text-danger">
+          Ingrese un correo electrónico válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" (keyup)="validatePassword()" required minlength="8">
+        <div *ngIf="passwordInvalid" class="text-danger">
+          La contraseña debe tener al menos 8 caracteres.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" (keyup)="validatePassword()" required>
+        <div *ngIf="passwordsDoNotMatch" class="text-danger">
+          Las contraseñas no coinciden.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Registrarse</button>
+    </div>
+  </form>
+</div>
