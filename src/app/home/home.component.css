@@ -1,0 +1,98 @@
+/* Ajustar el carrusel para que no ocupe todo el espacio */
+.carousel {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Ajustar las imágenes del carrusel */
+.carousel-inner img,
+.carousel-item img {
+  width: 100%;
+  height: 73vh; /* Ajuste predeterminado para pantallas grandes */
+  object-fit: cover;
+}
+
+/* Ajustar las leyendas */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Ajustar las flechas del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(100%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+  left: 20px;
+}
+
+.carousel-control-next {
+  right: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ajustar los indicadores del carrusel */
+.carousel-indicators [data-bs-target] {
+  background-color: white;
+}
+
+/* Estilo para el texto en blanco */
+.text-white {
+  color: #f8f9fa;
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+  .carousel-inner img {
+    height: 300px; /* Altura más pequeña para móviles */
+  }
+
+  .carousel-caption {
+    font-size: 0.9rem; /* Fuente más pequeña */
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Ajustes para pantallas medianas (tabletas) */
+@media (max-width: 992px) and (min-width: 577px) {
+  .carousel-inner img {
+    height: 50vh; /* Altura intermedia para tabletas */
+  }
+}
+
+/* Ajustes para pantallas grandes (escritorios) */
+@media (min-width: 1200px) {
+  .carousel-inner img {
+    height: 79vh; /* Altura más grande para escritorios */
+  }
+}

@@ -1,0 +1,46 @@
+.registerSize {
+    width: 100%;
+    max-width: 400px;
+    /* Limitar el tamaño máximo en pantallas grandes */
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Una sola columna */
+    gap: 20px;
+    /* Espaciado entre los elementos */
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+/* En pantallas pequeñas (hasta 576px) */
+@media (max-width: 576px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        /* Una sola columna en pantallas pequeñas */
+    }
+}
+
+/* En pantallas medianas (de 576px a 768px) */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(1, 1fr);
+        /* Una sola columna */
+    }
+}
+
+/* En pantallas grandes (mayores a 992px) */
+@media (min-width: 992px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas por fila en pantallas grandes */
+    }
+}
