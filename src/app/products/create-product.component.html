@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <h1>Crear Producto</h1>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        class="form-control"
+        formControlName="nombre"
+        [class.is-invalid]="productForm.get('nombre')?.invalid && productForm.get('nombre')?.touched"
+      />
+      <div *ngIf="productForm.get('nombre')?.invalid && productForm.get('nombre')?.touched" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input
+        id="precio"
+        type="text"
+        class="form-control"
+        formControlName="precio"
+        [class.is-invalid]="productForm.get('precio')?.invalid && productForm.get('precio')?.touched"
+      />
+      <div *ngIf="productForm.get('precio')?.invalid && productForm.get('precio')?.touched" class="text-danger">
+        El precio es obligatorio y debe tener un formato válido (ej. 100 o 100.00).
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="marca" class="form-label">Marca</label>
+      <input
+        id="marca"
+        type="text"
+        class="form-control"
+        formControlName="marca"
+        [class.is-invalid]="productForm.get('marca')?.invalid && productForm.get('marca')?.touched"
+      />
+      <div *ngIf="productForm.get('marca')?.invalid && productForm.get('marca')?.touched" class="text-danger">
+        La marca es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea
+        id="descripcion"
+        class="form-control"
+        formControlName="descripcion"
+        rows="3"
+        [class.is-invalid]="productForm.get('descripcion')?.invalid && productForm.get('descripcion')?.touched"
+      ></textarea>
+      <div *ngIf="productForm.get('descripcion')?.invalid && productForm.get('descripcion')?.touched" class="text-danger">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="imagen" class="form-label">URL de la Imagen</label>
+      <input
+        id="imagen"
+        type="text"
+        class="form-control"
+        formControlName="imagen"
+        [class.is-invalid]="productForm.get('imagen')?.invalid && productForm.get('imagen')?.touched"
+      />
+      <div *ngIf="productForm.get('imagen')?.invalid && productForm.get('imagen')?.touched" class="text-danger">
+        La URL de la imagen es obligatoria.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Crear Producto</button>
+  </form>
+</div>
