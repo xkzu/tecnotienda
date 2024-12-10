@@ -1,24 +1,27 @@
 <div class="container mt-5">
-  <h1>Productos Disponibles</h1>
-  <div class="product-grid">
-    <div class="card-container" *ngFor="let product of products">
-      <div class="card shadow-sm">
-        <img class="card-img-top" [src]="product.image" alt="{{ product.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.marca }}</p>
-          <p class="card-text">{{ product.description }}</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <button type="button" class="btn btn-sm btn-danger" (click)="removeFromCart(product)">-</button>
-            <span class="mx-3 fw-bold">{{ getProductQuantity(product) }}</span>
-            <button type="button" class="btn btn-sm btn-success" (click)="addToCart(product)">+</button>
-            <small class="text-muted">{{ product.price | customCurrency }}</small>
+  <h1 class="text-center mb-4">Productos Disponibles</h1>
+  <div class="row">
+    <div class="d-flex justify-content-end mt-3">
+      <button type="button" class="btn btn-primary" (click)="checkout()">Comprar</button>
+    </div>
+    <!-- Iteramos sobre los productos -->
+    <div class="col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let product of products">
+      <div class="card shadow-sm h-100">
+        <img class="card-img-top" [src]="product.imagen" [alt]="product.nombre">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.nombre }}</h5>
+          <p class="card-text text-muted">{{ product.marca }}</p>
+          <p class="card-text">{{ product.descripcion }}</p>
+          <div class="mt-auto">
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-sm btn-danger" (click)="removeFromCart(product)">-</button>
+              <span class="mx-3 fw-bold">{{ getProductQuantity(product) }}</span>
+              <button class="btn btn-sm btn-success" (click)="addToCart(product)">+</button>
+            </div>
+            <small class="text-muted d-block text-end mt-2">{{ product.precio | customCurrency }}</small>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="d-flex justify-content-end mt-3">
-    <button type="button" class="btn btn-primary" (click)="checkout()">Comprar</button>
   </div>
 </div>

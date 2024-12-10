@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <h1>Registrar Venta</h1>
+  <form (ngSubmit)="guardarVenta()">
+    <div class="mb-3">
+      <label for="usuarioId" class="form-label">Usuario ID</label>
+      <input
+        type="number"
+        class="form-control"
+        id="usuarioId"
+        [(ngModel)]="venta.usuarioId"
+        name="usuarioId"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="productos" class="form-label">Productos</label>
+      <textarea
+        class="form-control"
+        id="productos"
+        [(ngModel)]="venta.productos"
+        name="productos"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="total" class="form-label">Total</label>
+      <input
+        type="number"
+        class="form-control"
+        id="total"
+        [(ngModel)]="venta.total"
+        name="total"
+        min="1"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Venta</button>
+  </form>
+</div>

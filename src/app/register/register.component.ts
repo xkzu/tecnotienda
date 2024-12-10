@@ -7,14 +7,15 @@ import { User } from '../models/user.model';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   email: string = '';
   nombre: string = '';
   password: string = '';
   confirmPassword: string = '';
-  admin: boolean = false; // Por defecto el usuario no es admin
+  admin: boolean = false;
+
   emailInvalid: boolean = false;
   passwordInvalid: boolean = false;
   passwordsDoNotMatch: boolean = false;
@@ -31,26 +32,28 @@ export class RegisterComponent {
     this.passwordsDoNotMatch = this.password !== this.confirmPassword;
   }
 
-  onSubmit(registerForm: NgForm): void {
-    if (registerForm.valid && !this.emailInvalid && !this.passwordInvalid && !this.passwordsDoNotMatch) {
+  async onSubmit(registerForm: NgForm): Promise<void> {
+    if (registerForm.valid) {
       const newUser: User = {
-        id: 0, // El ID se asignará automáticamente al registrarse
+        id: 0,
         nombre: this.nombre,
-        password: this.password,
         email: this.email,
-        admin: this.admin // Por defecto es false
+        password: this.password,
+        admin: this.admin,
       };
 
-      // Registrar el usuario
-      this.userStateService.registerUser(newUser);
-
-      // Establecer el usuario registrado como el usuario actual
-      this.userStateService.setCurrentUser(newUser);
-
-      // Redirigir al usuario a la página de inicio
-      this.router.navigate(['/home']);
+      this.userStateService.registerUser(newUser).subscribe({
+        next: (user) => {
+          this.userStateService.setCurrentUser(user);
+          this.router.navigate(['/home']);
+        },
+        error: () => {
+          alert('Error al registrar el usuario.');
+        },
+      });
     } else {
       alert('Por favor complete todos los campos correctamente.');
     }
   }
+
 }

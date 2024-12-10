@@ -8,7 +8,7 @@ export class CartService {
   private items: Product[] = [];
 
   addToCart(product: Product) {
-    const item = this.items.find(p => p.name === product.name);
+    const item = this.items.find(p => p.nombre === product.nombre);
     if (item) {
       item.quantity = (item.quantity || 0) + 1; // Añade una verificación aquí
     } else {
@@ -17,7 +17,7 @@ export class CartService {
   }
 
   removeFromCart(product: Product) {
-    const index = this.items.findIndex(p => p.name === product.name);
+    const index = this.items.findIndex(p => p.nombre === product.nombre);
     if (index > -1) {
       const item = this.items[index];
       if (item.quantity && item.quantity > 1) {

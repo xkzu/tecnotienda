@@ -2,17 +2,32 @@
   <h1>Login</h1>
   <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" novalidate>
     <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre de Usuario</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" ngModel required placeholder="Ingrese su nombre de usuario">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        ngModel
+        required
+        placeholder="Ingrese su correo electrónico">
     </div>
 
     <div class="mb-3">
       <label for="password" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="password" name="password" ngModel required minlength="4" placeholder="Ingrese su contraseña">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        required
+        minlength="4"
+        placeholder="Ingrese su contraseña">
     </div>
 
     <div *ngIf="loginError" class="text-danger mb-3">
-      Nombre de usuario o contraseña incorrectos.
+      Correo electrónico o contraseña incorrectos.
     </div>
 
     <button type="submit" class="btn btn-primary">Ingresar</button>

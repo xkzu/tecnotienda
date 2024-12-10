@@ -1,7 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['/home']">PsFactory</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -13,26 +21,43 @@
           <a class="nav-link" [routerLink]="['/products']">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/contact']">Contacto</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/cart']">Carrito</a>
         </li>
+        <!-- Mostrar "Crear Producto" solo si el usuario es admin -->
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" [routerLink]="['/create-product']">Crear Producto</a>
+        </li>
       </ul>
-      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Mostrar "Recuperar Contraseña" solo si el usuario no está conectado -->
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" [routerLink]="['/recovery-password']">Recuperar Contraseña</a>
+        </li>
         <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" [routerLink]="['/register']">Registrarse</a>
         </li>
         <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" [routerLink]="['/login']">Ingresar</a>
         </li>
+        <!-- Menú desplegable para el usuario conectado -->
         <li class="nav-item dropdown" *ngIf="currentUser">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Hola, {{ currentUser.nombre }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" [routerLink]="['/profile']">Perfil</a></li>
-            <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/update-user', getCurrentUserId()]">Perfil</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a>
+            </li>
           </ul>
         </li>
       </ul>

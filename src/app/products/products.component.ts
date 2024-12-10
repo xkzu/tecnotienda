@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Product } from '../models/product';
+import { ProductService } from '../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -8,66 +9,39 @@ import { Product } from '../models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [
-    {
-      name: 'Tarjeta de video',
-      marca: 'Gigabyte',
-      description: '3 ventiladores, ideal para videojuegos.',
-      price: 15000,
-      image: 'assets/cards/card-1.png'
-    },
-    {
-      name: 'Fuente de poder',
-      marca: 'Corsair',
-      description: 'Alto rendimiento.',
-      price: 15000,
-      image: 'assets/cards/card-2.png'
-    },
-    {
-      name: 'Headset',
-      marca: 'MSI',
-      description: 'El mejor sonido.',
-      price: 15000,
-      image: 'assets/cards/card-3.png'
-    },
-    {
-      name: 'Memoria Ram',
-      marca: 'XPG',
-      description: 'Set de dos memorias ram, 16GB.',
-      price: 15000,
-      image: 'assets/cards/card-4.png'
-    },
-    {
-      name: 'Discipador',
-      marca: 'DeepCool',
-      description: 'De alta potencia.',
-      price: 15000,
-      image: 'assets/cards/card-5.png'
-    },
-    {
-      name: 'Case',
-      marca: 'Platinum',
-      description: 'Nadie verá lo que hay por dentro, diseño austero.',
-      price: 15000,
-      image: 'assets/cards/card-8.png'
-    },
-    {
-      name: 'Discipador',
-      marca: 'Generic',
-      description: 'Color blanco.',
-      price: 15000,
-      image: 'assets/cards/card-7.png'
-    },
-  ];
+  products: Product[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private productService: ProductService,
+              private router: Router) {}
 
   ngOnInit(): void {
+    this.fetchProducts();
+  }
+
+  fetchProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (data: any[]) => {
+        console.log('Datos recibidos:', data); // Asegúrate de que `precio` sea válido
+        this.products = data.map(product => ({
+          id: product.id,
+          nombre: product.nombre,
+          marca: product.marca,
+          descripcion: product.descripcion,
+          precio: parseFloat(product.precio), // Convertimos `precio` a número
+          imagen: product.imagen,
+          quantity: 0,
+        }));
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Ocurrió un error al cargar los productos.');
+      }
+    });
   }
 
   addToCart(product: Product): void {
     let cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingProduct = cart.find((cartItem: Product) => cartItem.name === product.name);
+    const existingProduct = cart.find(cartItem => cartItem.id === product.id);
 
     if (existingProduct) {
       existingProduct.quantity! += 1;
@@ -76,11 +50,12 @@ export class ProductsComponent implements OnInit {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    // alert('Producto agregado al carrito.');
   }
 
   removeFromCart(product: Product): void {
     let cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const productIndex = cart.findIndex((cartItem: Product) => cartItem.name === product.name);
+    const productIndex = cart.findIndex(cartItem => cartItem.id === product.id);
 
     if (productIndex > -1) {
       cart[productIndex].quantity! -= 1;
@@ -93,17 +68,12 @@ export class ProductsComponent implements OnInit {
 
   getProductQuantity(product: Product): number {
     let cart: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingProduct = cart.find((cartItem: Product) => cartItem.name === product.name);
+    const existingProduct = cart.find(cartItem => cartItem.id === product.id);
     return existingProduct ? existingProduct.quantity! : 0;
   }
 
   checkout(): void {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-    if (!currentUser) {
-      alert('Debes iniciar sesión para comprar.');
-      this.router.navigate(['/login']);
-    } else {
-      this.router.navigate(['/cart']);
-    }
+    alert('Redirigiendo al proceso de compra...');
+    this.router.navigate(['/cart']);
   }
 }

@@ -1,6 +1,6 @@
 <div class="container mt-5 text-white">
   <h1 class="text-center">Carrito de Compras</h1>
-  
+
   <div *ngIf="cartItems.length === 0">
     <p class="text-center">Tu carrito está vacío.</p>
   </div>
@@ -9,7 +9,7 @@
     <ul class="list-group mb-3">
       <li *ngFor="let item of cartItems" class="list-group-item d-flex justify-content-between align-items-center">
         <div class="grid-item col-span-12 col-md-8">
-          {{ item.name }} - {{ item.price | customCurrency }} x {{ item.quantity }}
+          {{ item.nombre }} - {{ item.precio | customCurrency }} x {{ item.quantity }}
         </div>
         <div class="grid-item col-span-12 col-md-4 d-flex justify-content-end">
           <button class="btn btn-sm btn-danger me-2" (click)="removeFromCart(item)">-</button>
