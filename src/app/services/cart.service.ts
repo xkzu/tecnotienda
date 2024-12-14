@@ -10,7 +10,7 @@ export class CartService {
   addToCart(product: Product) {
     const item = this.items.find(p => p.nombre === product.nombre);
     if (item) {
-      item.quantity = (item.quantity || 0) + 1; // Añade una verificación aquí
+      item.quantity = (item.quantity || 0) + 1;
     } else {
       this.items.push({ ...product, quantity: 1 });
     }

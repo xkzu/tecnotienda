@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { User } from '../models/user.model';
 export class UserStateService {
   private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUser());
   currentUser$ = this.currentUserSubject.asObservable();
-  private readonly apiUrl = 'http://localhost:8095/usuarios';
+  private readonly apiUrl = `${environment.apiUrlUsuario}/usuarios`;
 
   constructor(private http: HttpClient) {}
 
