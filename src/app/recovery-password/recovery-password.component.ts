@@ -14,7 +14,7 @@ export class RecoveryPasswordComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   recoveryPassword(): void {
-    const endpoint = `${environment.apiUrlProducto}/usuarios/recuperar/password/${this.email}/${this.password}`;
+    const endpoint = `${environment.apiUrlUsuario}/usuarios/recuperar/password/${this.email}/${this.password}`;
     this.http.put(endpoint, {}).subscribe({
       next: () => {
         alert('La contraseña ha sido actualizada correctamente.');
